@@ -26,21 +26,20 @@ const MovieListing = () => {
                 </div>
             )
     ), [movies]);
-    console.log(movies);
-    // renderShows = useMemo(() => (
-    //     shows.Response === "True" ?
-    //         shows.Search.map((show, index) => {
-    //             return (<MovieCard
-    //                 key={index}
-    //                 data={show}
-    //             />);
-    //         }) :
-    //         (
-    //             <div className='shows-error'>
-    //                 <h3>{shows.Error}</h3>
-    //             </div>
-    //         )
-    // ), [shows]);
+    renderShows = useMemo(() => (
+        shows.Response === "True" ?
+            shows.Search.map((show, index) => {
+                return (<MovieCard
+                    key={index}
+                    data={show}
+                />);
+            }) :
+            (
+                <div className='shows-error'>
+                    <h3>{shows.Error}</h3>
+                </div>
+            )
+    ), [shows]);
 
     return (
         <div className='movie-wrapper'>
@@ -57,7 +56,7 @@ const MovieListing = () => {
                 }
 
             </div>
-            {/* <div className='show-list'>
+            <div className='show-list'>
                 <h2>Shows</h2>
                 {showLoader ?
                     <div>Loading...</div>
@@ -68,7 +67,7 @@ const MovieListing = () => {
                         </Slider>
                     </div>
                 }
-            </div> */}
+            </div>
         </div>
     );
 }
