@@ -40,15 +40,11 @@ const movieSlice = createSlice({
     name: "movies",
     initialState,
     reducers: {
-        removeSelectedMovieOrShow: (state, { payload }) => {
+        removeSelectedMovieOrShow: (state) => {
             state.selectedMovieOrShow = {};
         },
         setSearchedText: (state, { payload }) => {
             state.searchedText = payload;
-        },
-        removeMoviesAndShows: (state) => {
-            state.movies = {};
-            state.shows = {};
         }
     },
     extraReducers: {
@@ -59,7 +55,7 @@ const movieSlice = createSlice({
             return { ...state, movies: payload, movieLoader: false };
         },
         [fetchAsyncMovies.rejected]: () => {
-            console.log("Rejected!");
+            console.log("Movies Rejected!");
         },
         [fetchAsyncShows.pending]: (state) => {
             return { ...state, showLoader: true };
@@ -67,13 +63,22 @@ const movieSlice = createSlice({
         [fetchAsyncShows.fulfilled]: (state, { payload }) => {
             return { ...state, shows: payload, showLoader: false };
         },
+        [fetchAsyncShows.rejected]: () => {
+            console.log("Shows Rejected!");
+        },
+        [fetchAsyncMovieOrShowDetail.pending]: () => {
+            console.log("MovieOrShowDetail Pending")
+        },
         [fetchAsyncMovieOrShowDetail.fulfilled]: (state, { payload }) => {
             return { ...state, selectedMovieOrShow: payload };
-        }
+        },
+        [fetchAsyncMovieOrShowDetail.rejected]: () => {
+            console.log("MovieOrShowDetail Rejected!");
+        },
     }
 });
 
-export const { removeSelectedMovieOrShow, setSearchedText, removeMoviesAndShows } = movieSlice.actions;
+export const { removeSelectedMovieOrShow, setSearchedText } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
 export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow;

@@ -6,12 +6,11 @@ import { fetchAsyncMovies, fetchAsyncShows, getSearchedText } from '../../featur
 const Home = () => {
     const dispatch = useDispatch();
     const searchedText = useSelector(getSearchedText);
-    const movieText = searchedText !== "" ? searchedText : "Harry";
-    const showText = searchedText !== "" ? searchedText : "Friends";
+
     useEffect(() => {
-        dispatch(fetchAsyncMovies(movieText));
-        dispatch(fetchAsyncShows(showText));
-    }, [dispatch, movieText, showText, searchedText]);
+        dispatch(fetchAsyncMovies(searchedText !== "" ? searchedText : "Harry"));
+        dispatch(fetchAsyncShows(searchedText !== "" ? searchedText : "Friends"));
+    }, [dispatch, searchedText]);
     return (
         <div>
             <div className='banner-img'></div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import user from "../../images/user.png";
 import "./Header.scss"
-import { fetchAsyncMovies, fetchAsyncShows, setSearchedText, removeMoviesAndShows } from '../../features/movies/movieSlice';
+import { setSearchedText } from '../../features/movies/movieSlice';
 
 export default function Header() {
     const [term, setTerm] = useState("");
@@ -16,10 +16,7 @@ export default function Header() {
             setError("Enter something to Search!!");
         }
         else {
-            dispatch(removeMoviesAndShows());
             dispatch(setSearchedText(term));
-            dispatch(fetchAsyncMovies(term));
-            dispatch(fetchAsyncShows(term));
         }
     }
 
