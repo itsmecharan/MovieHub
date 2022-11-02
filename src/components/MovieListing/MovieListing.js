@@ -25,51 +25,44 @@ const MovieListing = () => {
                     <h3>{movies.Error}</h3>
                 </div>
             )), [movies]);
-    console.log(renderMovies);
-    // renderShows = useMemo(() => (
-    //     shows.Response === "True" ?
-    //         shows.Search.map((show, index) => {
-    //             return (<MovieCard
-    //                 key={index}
-    //                 data={show}
-    //             />);
-    //         }) :
-    //         (
-    //             <div className='shows-error'>
-    //                 <h3>{shows.Error}</h3>
-    //             </div>
-    //         )
-    // ), [shows]);
+    renderShows = useMemo(() => (
+        shows.Response === "True" ?
+            shows.Search.map((show, index) => {
+                return (<MovieCard
+                    key={index}
+                    data={show}
+                />);
+            }) :
+            (
+                <div className='shows-error'>
+                    <h3>{shows.Error}</h3>
+                </div>
+            )
+    ), [shows]);
 
 
     return (
         <div className='movie-wrapper'>
             <div className='movie-list'>
-                {console.log("In render")}
                 <h2>Movies</h2>
                 {movieLoader ?
-                    <div>Loading...</div>
+                    <div className='loader-text'>Loading...</div>
                     :
-                    <div className='movie-container'>
-                        <Slider {...Settings}>
-                            {renderMovies}
-                        </Slider>
-                    </div>
+                    <Slider {...Settings(renderMovies.length)}>
+                        {renderMovies}
+                    </Slider>
                 }
-
             </div>
-            {/* <div className='show-list'>
+            <div className='show-list'>
                 <h2>Shows</h2>
                 {showLoader ?
-                    <div>Loading...</div>
+                    <div className='loader-text'>Loading...</div>
                     :
-                    <div className='movie-container'>
-                        <Slider {...Settings}>
-                            {renderShows}
-                        </Slider>
-                    </div>
+                    <Slider {...Settings(renderShows.length)}>
+                        {renderShows}
+                    </Slider>
                 }
-            </div> */}
+            </div>
         </div>
     );
 }

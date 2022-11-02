@@ -17,6 +17,7 @@ export default function Header() {
         }
         else {
             dispatch(setSearchedText(term));
+            navigate("/");
         }
     }
 

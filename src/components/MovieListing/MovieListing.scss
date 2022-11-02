@@ -9,4 +9,19 @@
         margin-bottom: 10px;
         font-weight: 400;
     }
+
+    .loader-text {
+        color: #fff;
+        font-weight: 500;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .movies-error,
+    .shows-error {
+        h3 {
+            color: #fff;
+            font-weight: 500;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    }
 }

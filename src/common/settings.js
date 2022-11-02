@@ -1,6 +1,5 @@
-export const Settings = {
-    dots: true,
-    infinite: false,
+export const Settings = (itemsLength) => ({
+    dots: false,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 3,
@@ -10,8 +9,7 @@ export const Settings = {
             settings: {
                 slidesToShow: 5,
                 slidesToScroll: 4,
-                infinite: true,
-                dots: false
+                infinite: itemsLength > 5,
             }
         },
         {
@@ -19,8 +17,7 @@ export const Settings = {
             settings: {
                 slidesToShow: 4,
                 slidesToScroll: 3,
-                infinite: true,
-                dots: false
+                infinite: itemsLength > 4,
             }
         },
         {
@@ -28,8 +25,7 @@ export const Settings = {
             settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                infinite: true,
-                dots: false
+                infinite: itemsLength > 3,
             }
         },
         {
@@ -37,16 +33,18 @@ export const Settings = {
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
-                initialSlide: 2
+                initialSlide: 2,
+                infinite: itemsLength > 2,
             }
         },
         {
             breakpoint: 480,
             settings: {
                 slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                infinite: itemsLength > 1,
             }
         }
     ]
 
-};
+});
