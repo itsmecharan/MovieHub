@@ -1,6 +1,7 @@
 export const Settings = (itemsLength) => ({
     dots: false,
     speed: 500,
+    infinite: itemsLength > 6,
     slidesToShow: 6,
     slidesToScroll: 3,
     responsive: [
